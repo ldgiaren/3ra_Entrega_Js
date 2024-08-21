@@ -1,0 +1,22 @@
+[
+    {
+        "nombre": "Daniel Perez",
+        "edad": 22,
+        "opinion": "Es un curso muy educativo."
+    },
+    {
+        "nombre": "Marina Sanchez",
+        "edad": 42,
+        "opinion": "Es un curso muy complejo."
+    },
+    {
+        "nombre": "Pepito Sayan",
+        "edad": 18,
+        "opinion": "Un poco complejo, pero entendible"
+    },
+    {
+        "nombre": "Daniel Gil",
+        "edad": 28,
+        "opinion": "Muy bien explicado."
+    }
+]

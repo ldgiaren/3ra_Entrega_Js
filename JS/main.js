@@ -8,6 +8,8 @@
 
 // --- Conectamos elementos del HTML
 
+
+
 let nombre_alumno = document.getElementById  ('nombrealumno')
 
 let nota1 =document.getElementById('nota1')
@@ -50,9 +52,11 @@ window.addEventListener('load',function(){
     }
 })
 
-// ---  el evento de submit para que no se reinicie
+// _________________________ el evento de submit para que no se reinicie y se calcule____________________
 formulario.addEventListener('submit',function(e){
     e.preventDefault()
+
+   
 
     // -- calculamos el promedi
 
@@ -69,6 +73,9 @@ formulario.addEventListener('submit',function(e){
         if(resultado > 70){
         nombre_alumno_apro.value = nombre_alumno.value
         nota_final_apro.value = resultado.toFixed(2)
+
+       
+        
 
         nombre_alumno_no_apro.value = '' // Limpiamos el campo de no aprobados
         nota_final_no_apro.value = '' // Limpiamos el campo de no aprobados
@@ -92,10 +99,48 @@ formulario.addEventListener('submit',function(e){
         localStorage.removeItem('nombreAprobado')
         localStorage.removeItem('notaAprobado')
     }
+
+    // -- Guardar los datos del estudiante en localStorage
+
+let estudiantes = JSON.parse( localStorage.getItem('estudiantes')) || []
+
+let nuevoEstudiante = {
+    nombre: nombre_alumno.value,
+
+    nota: resultado.toFixed(2)
+}
+estudiantes.push(nuevoEstudiante)
+
+localStorage.setItem('estudiantes', JSON.stringify(estudiantes))
+
 })
 
+// ________________________ limpiar campos ___________________________
 
-// ------------------- boton ------------------------------------------------- //
+
+let limpiar = document.getElementById('sumit_limpiar');
+
+limpiar.addEventListener('click', (e) => {
+
+    e.preventDefault(); // Evita que el botón envíe el formulario
+
+    // Limpiar las notas
+     // Limpiar el nombre del alumno
+
+     nombre_alumno.value = ''
+    nota1.value = ''
+    nota2.value = ''
+    nota3.value = ''
+    nota4.value = ''
+    nota5.value = ''
+    promedio_notas.value = ''
+     resultado.value=''
+});
+
+
+
+
+// ------------------- boton cambio de modo ------------------------------------------------- //
 
 // treaemos el nodo del dom
 // darle un evento al nodo que hemos traido.
@@ -121,3 +166,9 @@ boton_noche.addEventListener('click',()=>{
 
     localStorage.setItem('modo1', 'contenedorForm_noche')
 })
+
+
+
+
+
+
